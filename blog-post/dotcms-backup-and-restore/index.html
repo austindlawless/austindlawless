@@ -12,7 +12,7 @@
         
           <meta charset="utf-8">
 <title>
-      Configuring TinyMCE Styles in dotCMS
+      DotCMS Backup and Restore
   </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="	
@@ -108,9 +108,9 @@
         
             <div class="news-header">
     <h2>
-      Configuring TinyMCE Styles in dotCMS      		    </h2>
+      DotCMS Backup and Restore      		    </h2>
     <!--span class="byline"></span-->
-    <time datetime="2015-06-11T12:45:00">Jun 11 2015 at 12:45 UTC</time>
+    <time datetime="2014-11-12T02:00:00">Nov 12 2014 at 14:00 UTC</time>
     <div class="addThisNews">          
       
   
@@ -137,58 +137,118 @@
   </div>
   
   <div class="news-body">
-    <p>It is common practice to use CSS classes to format content. With some configuration, the TinyMCE WYSIWYG editor can empower non-code level users to keep with this practice. The styles-dropdown (pictured below) can be populated with a list of classes that can be applied to text in the editor using a span.</p>
+    <p>So, a medium AWS server is about $50 / month. That is a little steep. So, I needed to back up dotCMS and restore it to a micro server. First, I needed a place to put my back up data. I used github for two reasons. I can use git to move files from one server to another when restoring, and I will have version control of my back up data. I created a private repository and cloned it to my dotCMS server.</p>
 
-<p><img src="/dotAsset/26a3982b-3c49-48c6-adbe-3d25d3e2123a.png" width="1000" height="87" alt="TinyMCE WYSIWYG Menu Bar" title="TinyMCE WYSIWYG Menu Bar" /></p>
+<code>git clone https://github.com/username/repository-name.git</code>
 
+<p>Per the dotCMS documentation, I needed to backup a minimum of three things for a full restore: assets, plugins, and the database. So, I navigated to my back up repository, copied the assets and plugins into the repository, dumped the database into the repository, added and committed the files to version control, and pushed the changes to GitHub.</p>
 
-<p>By default the TinyMCE WYSIWYG editor in dotCMS includes the styles-dropdown but it is empty. In order to configure TinyMCE beyond the default install for dotCMS, the plugin needs to be installed to our static-plugin directory. Directions form dotCMS to do that are available <a href="http://dotcms.com/docs/latest/controlling-tinymce-wysiwyg" title="Enable TinyMCE Custom Configuration in dotCMS" target="_blank">here</a>.</p>
+<pre>
+<code>cp -a /opt/dotcms/wwwroot/current/dotserver/dotCMS/assets/ .
+cp -a /opt/dotcms/wwwroot/current/dotserver/plugins/ .
+mysqldump -u root database-name &gt; outputfile.sql
+git add -A .
+git commit -m "added back up data to repository"
+git push origin master</code>
+</pre>
 
+<p>Next, I needed to instantiate a micro server. The process was very similar to my post on getting started with dotCMS on AWS servers, but I used a micro instead of a medium. I followed the directions from dotCMS to re-install dotCMS, mostly. I started by running:</p>
 
-<p>With that out of the way, let's get to configuring some styles!</p>
+<pre>
+<code># connect to the aws instance
+ssh -i ~/keys/your-key.pem ec2-user@{servers.amazon.public.ip}
 
-<p>We will be modifying two of the files from the TinyMCE plugin: 'tiny_mce_config.jsp' and 'plugin.properties'.</p>
+# set admin and update yum
+sudo -i
+yum update
 
-<h3>Updates to 'tiny_mce_config.jsp':</h3>
+#install mysql
+yum install -y mysql55-server.x86_64
 
-<p>There is a section of code as follows:</p>
+#Start mysql and create database, db user and password
+/etc/init.d/mysqld start
 
+mysql
+&nbsp;CREATE USER 'dotcms2'@'localhost' IDENTIFIED BY 'some_password';
+&nbsp;CREATE USER 'dotcms2'@'127.0.0.1' IDENTIFIED BY 'some_password';
+&nbsp;GRANT ALL PRIVILEGES ON *.* TO 'dotcms2'@'127.0.0.1' WITH GRANT OPTION;
+&nbsp;GRANT ALL PRIVILEGES ON *.* TO 'dotcms2'@'localhost' WITH GRANT OPTION;
+&nbsp;CREATE DATABASE dotcms2 default character set = utf8 default collate = utf8_general_ci;
+exit;
 
-<pre><code>&lt;% /*Set the WYSIWYG BLOCK FORMATS*/<br />&nbsp; String blockformats =APILocator.getPluginAPI().loadProperty("org.dotcms.tinymce_extended", "WYSIWYG_BLOCKFORMATS");<br />&nbsp; if(UtilMethods.isSet(blockformats)){<br />&nbsp; %&gt;<br />&nbsp; &lt;%="theme_advanced_blockformats : \""+blockformats+"\","%&gt;<br />&nbsp; &lt;%<br />&nbsp; }else{<br />&nbsp; %&gt;<br />&nbsp; &lt;%="theme_advanced_blockformats : \"p,div,h1,h2,h3,h4,h5,h6,blockquote,dt,dd,code,samp,pre\","%&gt;<br />&nbsp; &lt;%<br />&nbsp; }<br />%&gt;</code></pre>
+#create and switch to parent directory
+mkdir -p /opt/dotcms/wwwroot/dotcms-2.5.6
+cd /opt/dotcms/wwwroot/dotcms-2.5.6
 
+#get dotcms source zip for desired stable release version - this url changes frequently
+wget http://www.dotcms.com/physical_downloads/release_builds/dotcms_2.5.6.zip
+unzip dotcms_2.5.6.zip
+cd ../
+ln -s /opt/dotcms/wwwroot/dotcms-2.5.6 /opt/dotcms/wwwroot/current
+cd current/dotserver/
 
+#change the /bin scripts permissions, add execution permission to *.sh in the bin directory
+chmod 755 ./bin/*.sh
+chmod 755 ./tomcat/bin/*.sh</code>
+</pre>
 
-<p>We are going to use this code as a model for how our styles-dropdown will be populated. Replace the 'blockformats' references with 'styles' and update the default string with a list of classes like:</p>
+<p>I did NOT run the following command because they are covered by the plugins back up.</p>
 
-<p><code>\"content,nav,footer,subHeader\",<br /></code></p>
+<pre>
+<code>#Create ROOT Plugin Configuration Directories (Never directly edit dotCMS files as this will break on upgrade)
+mkdir -p plugins/com.dotcms.config/ROOT/tomcat/conf/Catalina/localhost/
+mkdir -p plugins/com.dotcms.config/ROOT/bin
+cp tomcat/conf/Catalina/localhost/ROOT.xml plugins/com.dotcms.config/ROOT/tomcat/conf/Catalina/localhost/
 
-<p>Or for a prettier list in the dropdown:</p>
+#Copy startup.sh to root plugin
+cp bin/startup.sh plugins/com.dotcms.config/ROOT/bin
 
-<p><code>\"Content=content;Nav=nav;Footer=footer;Sub Header=subHeader\",<br /></code></p>
+#OPTIONAL- copy the server xml and configure ports for the Dotcms application
+cp tomcat/conf/server.xml plugins/com.dotcms.config/ROOT/tomcat/conf/
 
-<p>Even an empty list is fine because the property in the next file will override whatever we put as the default. The final product should look something like this:</p>
+#Then edit the server.xml file in your plugins directory and change the port on this line:
+#&lt;Connector maxThreads="75" connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/&gt;
 
+#Configure db connection and dotCMS db name and password
+# comment the postgresql db,
+# UNCOMMENT the mysql db AND
+# change username to dotcms2 and password to what
+# you entered for 'some_password'
+vi plugins/com.dotcms.config/ROOT/tomcat/conf/Catalina/localhost/ROOT.xml
 
+# Change -Xmx for better heap size (recommend min 2 Gigs for testing)
+vi plugins/com.dotcms.config/ROOT/bin/startup.sh
+#The line in the startup.sh file looks like this:
+---
+JAVA_OPTS="$JAVA_OPTS -Djava.awt.headless=true -Xverify:none -Dfile.encoding=UTF8 -server -Xmx1G -XX:MaxPermSize=256m -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -javaagent:dotCMS/WEB-INF/lib/jamm-0.2.5.jar"
+---</code>
+</pre>
 
-<pre><code>&lt;% /*Set the WYSIWYG STYLES*/<br />&nbsp; String styles =APILocator.getPluginAPI().loadProperty("org.dotcms.tinymce_extended", "WYSIWYG_STYLES");<br />&nbsp; if(UtilMethods.isSet(styles)){<br />&nbsp; %&gt;<br />&nbsp; &lt;%="theme_advanced_styles : \""+styles+"\","%&gt;<br />&nbsp; &lt;%<br />&nbsp; }else{<br />&nbsp; %&gt;<br />&nbsp; &lt;%="theme_advanced_styles : \"\","%&gt;<br />&nbsp; &lt;%<br />&nbsp; }<br />%&gt;</code></pre>
+<p>Instead, I copied the assets and plugins from my back up into my dotCMS. Then, complete the installation by:</p>
 
+<pre>
+<code>#deploy configuration plugin changes
+./bin/deploy-plugins.sh
 
+#start up dotcms and tail the log
+touch tomcat/logs/dotcms.log
+./bin/startup.sh &amp;&amp; tail -f tomcat/logs/dotcms.log</code>
+</pre>
 
-<p>Now we need to update the 'plugin.properties' file to include our custom styles.</p>
+<p>As dotCMS makes clear in their documentation, I needed to run a full re-index. This did not seem to suffice. But, stopping and starting dotCMS did the trick.</p>
 
-<h3>Updates to 'plugin.properties':</h3>
+<pre>
+<code># shut down dotCMS
+./bin/shutdown.sh
+# wait for dotCMS to finish shutting down and restart
+./bin/startup.sh</code>
+</pre>
 
-<p>We will again use the 'blockformats' configuration as a guide. It looks like this:</p>
+<p><img src="/dotAsset/9727369f-0c33-469f-9cfe-0f1e2f37f4ed.png" width="1200" height="797" alt="re-index" title="re-index" /></p>
 
+<p>Lastly, I needed to update my ip address on my record set (see below) and shut down my expensive medium AWS instance.</p>
 
-
-<pre><code>&#x23;specify the theme blockformats the wysiwyg should use<br />&#x23;if is not set by default use this blocksformats: "p,div,h1,h2,h3,h4,h5,h6,blockquote,dt,dd,code,samp,pre" <br />WYSIWYG_BLOCKFORMATS=p,div,h1,h2,h3,h4,h5,h6,blockquote,dt,dd,code,samp,pre<br /></code></pre>
-
-<p>The resulting 'styles' section looks like this:</p>
-
-<pre><code>&#x23;specify the theme styles the wysiwyg should use<br />&#x23;if is not set the default is: ""<br />WYSIWYG_STYLES=Content=content;Nav=nav;Footer=footer;Sub Header=subHeader</code></pre>
-
-<p>Now when we restart the server, the TinyMCE WYSIWYG editor will have a populated styles-dropdown that will apply &lt;span class="style"&gt;...&lt;/span&gt; to our content that can be formatted using our normal CSS file for our site.</p>    <div class="tags">
+<p><img src="/dotAsset/d6626dd3-00bd-4102-bc0a-87c7799f11c3.png" width="1200" height="801" alt="change record set" title="record-set" /></p>    <div class="tags">
       <b>Tags:</b> 
                 </div>
   </div>
@@ -216,6 +276,7 @@
   </div>
   <div class="clear p3">&nbsp;</div>
   <div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+
 
 
 
