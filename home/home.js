@@ -11,5 +11,4 @@ angular.module('app.home', ['ngRoute'])
   }])
 
   .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
-    console.log($scope);
   }]);

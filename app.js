@@ -5,10 +5,9 @@ angular.module('app', [
   'app.home',
   'app.god',
   'app.technology',
-  'app.about'
+  'app.about',
+  'app.post'
 ]).
   config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
-
-    $locationProvider.html5Mode(true);
   }]);
