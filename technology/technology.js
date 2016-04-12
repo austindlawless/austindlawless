@@ -11,5 +11,4 @@ angular.module('app.technology', ['ngRoute'])
   }])
 
   .controller('TechCtrl', ['$scope', '$http', function ($scope, $http) {
-    console.log($scope);
   }]);
