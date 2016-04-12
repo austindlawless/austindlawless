@@ -4,6 +4,7 @@ angular.module('app', [
   'ngRoute',
   'app.home',
   'app.god',
+  'app.outdoors',
   'app.technology',
   'app.about',
   'app.post'

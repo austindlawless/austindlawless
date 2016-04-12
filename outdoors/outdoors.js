@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('app.god', ['ngRoute'])
+angular.module('app.outdoors', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-      when('/god', {
-        templateUrl: 'god/god.html',
-        controller: 'GodCtrl'
+      when('/outdoors', {
+        templateUrl: 'outdoors/outdoors.html',
+        controller: 'OutdoorsCtrl'
       });
   }])
 
-  .controller('GodCtrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('OutdoorsCtrl', ['$scope', '$http', function ($scope, $http) {
   }]);
