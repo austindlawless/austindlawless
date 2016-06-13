@@ -12,5 +12,8 @@
     "angular-mocks": "~1.4.0",
     "bootstrap": "~3.3.6",
     "a0-angular-storage": "^0.0.13"
+  },
+  "resolutions": {
+    "angular": "1.4.10"
   }
 }
