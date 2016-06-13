@@ -49,3 +49,8 @@ a:hover {
 	color: #588c1d;
 	text-decoration: none;
 }
+
+.post-list h3 {
+	font-size: 2em;
+	line-height: 40px;
+}
