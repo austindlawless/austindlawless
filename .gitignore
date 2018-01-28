@@ -3,3 +3,4 @@ _site
 *.iml
 .idea
 assets/vendor
+.DS_Store
