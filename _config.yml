@@ -1,31 +1,46 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Austin D Lawless
-baseurl: "/" # the subpath of your site, e.g. /blog
+title: My personal blog - Austin Lawless
+email: austindlawless@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://austindlawless.com" # the base hostname & protocol for your site, e.g. http://example.com
 year: 2018
 
+# Author settings
+author: Austin Lawless
+author-pic:
+about-author: My name is Austin Lawless. I have a website.
+
+# Contact links
+website: austindlawless.com
+linkedin: # Add your Linkedin handle
+github: austindlawless
+twitter: '@austindlawless'
+
+# Disqus
+discus_identifier: austindlawless-com
+
+# Tracker
+analytics: # Google Analytics
+
+# Paginate
+paginate: 6
+paginate_path: /page:num/
+
 # Build settings
+markdown: kramdown
+gems:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+include: [_pages]
 exclude:
   - Gemfile
   - Gemfile.lock
   - bower.json
   - angular
   - Readme.md
-
-sass:
-    sass_dir: _sass
-    style: compressed

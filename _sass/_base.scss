@@ -1,94 +1,148 @@
-// Variables
-$text-color:        #444;
-$lighter-text-color: #616161;
-$background-color:  rgba(255,255,255,.7);
-$lighter-background-color: rgba(255,255,255,.2);
-$border-color:      #777;
+@import "variables";
+@import "syntax";
+@import "tools/normalize";
+
+
+/* = = = = = = = = = = Main Styles = = = = = = = = = = */
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  line-height: 1.5;
+}
 
 body {
-  background:url('/assets/img/01.jpg') no-repeat center fixed;
+  font-family: 'Montserrat', sans-serif;
+  color: $dark-gray;
+  margin: 0;
+  background-color: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.everything {
-  background-color:  $background-color;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: auto;
-  color: $text-color;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  color: $dark-purple;
+  font-weight: 400;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
+img {
+  height: auto;
+  max-width: 100%;
 }
 
-/* Custom page header */
-.header {
-  padding-bottom: 20px;
-  border-bottom: 1px solid $border-color;
-  h3 {
-    color: $text-color;
-    /* Make the masthead heading the same height as the navigation */
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-  }
+a {
+  color: $dark-pink;
 }
 
-.summary {
-  text-align: center;
-  margin-bottom: 20px;
-  h1 {
-    font-size: 2.5em;
-  }
-  h3 {
-    font-size: 1.3em;
-    color: $lighter-text-color;
-  }
+blockquote {
+  border-left: 3px solid $dark-purple;
+  padding-left: 18px;
+  margin-left: 21px;
+  font-style: italic;
+  color: $dark-purple;
 }
 
-.messages {
-  ul {
-    list-style: none;
-    padding: 0 10px 0;
-    margin-bottom: 30px;
-  }
-}
+pre {
+  padding: 16px 32px;
+  overflow-x: auto;
 
-.message {
-  background-color: $lighter-background-color;
-  padding: 1px 5px 1px;
-  margin: 3px;
-  h5 {
-    margin: 4px 0;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  border-top: 1px solid $border-color;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 1000px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .footer {
+  code {
+    border: 0;
     padding-right: 0;
     padding-left: 0;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: transform .4s cubic-bezier(0.16, 0.68, 0.43, 0.99);
+}
+
+.flex-container.active {
+  transform: translate3d(300px, 0, 0);
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
   }
 }
+
+.content {
+  flex-grow: 1;
+}
+
+.wrapper {
+  width: 960px;
+  max-width: 90%;
+  margin: 0 auto;
+  position: relative;
+}
+
+::-moz-selection {
+  background: rgba(49, 30, 62, 0.7);
+  color: #ffffff;
+}
+
+::selection {
+  background: rgba(49, 30, 62, 0.7);
+  color: #ffffff;
+}
+
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.clearfix::before {
+  clear: both;
+}
+
+/* = = = = = = = = = = Header Styles = = = = = = = = = = */
+@import "parts/header";
+
+/* = = = = = = = = = = Search Styles = = = = = = = = = = */
+@import "parts/search";
+
+/* = = = = = = = = = = Post-Card Styles = = = = = = = = = = */
+@import "parts/post-card";
+
+/* = = = = = = = = = = Pagination Styles = = = = = = = = = = */
+@import "parts/pagination";
+
+
+/* = = = = = = = = = = Footer Styles = = = = = = = = = = */
+@import "parts/footer";
+
+/* = = = = = = = = = = Post-Page Styles = = = = = = = = = = */
+@import "parts/post-page";
+
+/* = = = = = = = = = = Author Box Styles = = = = = = = = = = */
+@import "parts/author-box";
+
+/* = = = = = = = = = = About Page Styles = = = = = = = = = = */
+@import "parts/about";
+
+/* = = = = = = = = = = Tags Styles = = = = = = = = = = */
+@import "parts/tags";
+
+/* = = = = = = = = = = Animate Styles = = = = = = = = = = */
+@import "parts/animate";
+
+/* = = = = = = = = = = Media = = = = = = = = = = */
+@import "media";
