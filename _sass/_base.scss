@@ -1,0 +1,94 @@
+// Variables
+$text-color:        #444;
+$lighter-text-color: #616161;
+$background-color:  rgba(255,255,255,.7);
+$lighter-background-color: rgba(255,255,255,.2);
+$border-color:      #777;
+
+body {
+  background:url('/assets/img/01.jpg') no-repeat center fixed;
+}
+
+.everything {
+  background-color:  $background-color;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: auto;
+  color: $text-color;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $border-color;
+  h3 {
+    color: $text-color;
+    /* Make the masthead heading the same height as the navigation */
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+  }
+}
+
+.summary {
+  text-align: center;
+  margin-bottom: 20px;
+  h1 {
+    font-size: 2.5em;
+  }
+  h3 {
+    font-size: 1.3em;
+    color: $lighter-text-color;
+  }
+}
+
+.messages {
+  ul {
+    list-style: none;
+    padding: 0 10px 0;
+    margin-bottom: 30px;
+  }
+}
+
+.message {
+  background-color: $lighter-background-color;
+  padding: 1px 5px 1px;
+  margin: 3px;
+  h5 {
+    margin: 4px 0;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  border-top: 1px solid $border-color;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+}
