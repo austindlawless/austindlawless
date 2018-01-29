@@ -4,9 +4,10 @@ title:  Getting Started with DotCMS and Amazon Web Services
 date:   2014-08-25
 description: How to run DotCMS in an ec2 instance.
 img: dotcms.png
-tags: [Blog, AWS, DotCMS, EC2, Technology]
+tags: [AWS, DotCMS, EC2, Technology]
 author: Austin Lawless
 ---
+
 I am starting a website to put the things that I learn on the web. The first will be how to host my own website using  [Amazon Web Services](http://aws.amazon.com/){:title="Amazon Web Services Link" target="_blank"} and [DotCMS](http://dotcms.com/){:title="dotCMS" target="_blank"}. I chose AWS because it offers a lot of flexibility and customization (learning opportunities), and I chose dotCMS because we use it at work and I want to get as familiar with it as possible.
 
 Using the [tutorial](http://dotcms.com/docs/latest/amazonLinuxEc2DotcmsRecipe){:title="tutorial" target="_blank"} from dotCMS I was able to create an AWS [ec2](http://aws.amazon.com/ec2/){:title="ec2 target="_blank"} instance, get dotCMS up and running, and associate my domain name ([austindlawless.com](http://austindlawless.com/){:title="austindlawless.com" target="_blank"}) with the public ip address.
