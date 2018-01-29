@@ -4,7 +4,7 @@ title:  DotCMS Backup and Restore
 date:   2014-11-12
 description: How to set up dotCMS for backup and restore.
 img: backup-and-restore.png
-tags: [Blog, AWS, DotCMS, EC2, Technology]
+tags: [Blog, AWS, Amazon Web Services, DotCMS, EC2, Technology]
 author: Austin Lawless
 ---
 So, a medium AWS server is about $50 / month. That is a little steep. So, I needed to back up dotCMS and restore it to a micro server. First, I needed a place to put my back up data. I used github for two reasons. I can use git to move files from one server to another when restoring, and I will have version control of my back up data. I created a private repository and cloned it to my dotCMS server.

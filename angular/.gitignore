@@ -1,7 +1,0 @@
-logs/*
-!node_modules/protractor/node_modules/accessibility-developer-tools/dist/js/.gitkeep
-node_modules/
-bower_components/
-tmp
-.DS_Store
-.idea
