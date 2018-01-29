@@ -1,19 +1,5 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
-  "license": "MIT",
-  "private": true,
+  "name": "birthdaymessages",
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-route": "~1.4.0",
-    "angular-loader": "~1.4.0",
-    "angular-mocks": "~1.4.0",
-    "bootstrap": "~3.3.6",
-    "a0-angular-storage": "^0.0.13"
-  },
-  "resolutions": {
-    "angular": "1.4.10"
   }
 }

@@ -1,0 +1,46 @@
+title: My personal blog - Austin Lawless
+email: austindlawless@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://austindlawless.com" # the base hostname & protocol for your site, e.g. http://example.com
+year: 2018
+
+# Author settings
+author: Austin Lawless
+author-pic: austin-face.jpg
+about-author: My name is Austin Lawless. I have a website.
+
+# Contact links
+website: austindlawless.com
+linkedin: # Add your Linkedin handle
+github: austindlawless
+twitter: '@austindlawless'
+
+# Disqus
+discus_identifier: austindlawless-com
+
+# Tracker
+analytics: UA-40173209-2
+
+# Paginate
+paginate: 6
+paginate_path: /page:num/
+
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+include: [_pages]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - bower.json
+  - angular
+  - Readme.md
