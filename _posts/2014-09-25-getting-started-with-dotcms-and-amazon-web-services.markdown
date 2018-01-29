@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Getting Started with DotCMS and Amazon Web Services
-date:   2017-08-25
+date:   2014-08-25
 description: How to run DotCMS in an ec2 instance.
 img: dotcms.png
 tags: [Blog, AWS, DotCMS, EC2, Technology]
