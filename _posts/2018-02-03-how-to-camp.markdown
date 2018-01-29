@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  How to Camp
-date:   2017-08-25 13:32:20 +0300
+date:   2017-08-25
 description: This is a reference for students of my learn to camp class at REACH Winter Retreat 2018
 img: how-to-camp.jpg
 tags: [Camping, Education]
