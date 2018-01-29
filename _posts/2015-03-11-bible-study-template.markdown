@@ -29,6 +29,3 @@ This is the goal of all the studying we've done up to this point. What do we do?
 2. How does the truth revealed here affect my relationship with others?
 3. How does the truth revealed here affect me?
 4. How does the truth revealed here affect my response to Satan?
-
-
-
