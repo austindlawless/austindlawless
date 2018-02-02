@@ -28,6 +28,8 @@ Big Bend and Guadalupe Mountain are your choices in Texas. But, Arkansas, New Me
 The Western states, like Colorado and Oregon, have lots of it.
 
 
+![camp site](/assets/img/camp-site.jpg)
+
 # What to do at your site
 * Choose a site at least 200 ft from both the trail and water
 * Set up your tent and kitchen
@@ -51,6 +53,7 @@ Get even more info on setting up a tent [here](https://www.rei.com/learn/expert-
 # How to use a camp stove
 It just like a gas stove in a house except you light it with a match. Let's practice!
 
+![camp fire](/assets/img/camp-fire.jpg)
 
 # How to build a campfire
 ### Be safe.
@@ -83,6 +86,7 @@ A clove hitch is good for hitching when the knot must be tied under load - such 
 ### [Figure 8 Bend](http://www.animatedknots.com/fig8join/){:target="_blank"}
 This is a secure knot for connecting to cords that is easy ot untie. But, it is a bulky knot.
 
+![filtering water](/assets/img/filtering-water.jpg)
 
 # How to purify water 
 ### Micro filter
