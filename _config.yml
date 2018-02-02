@@ -1,18 +1,16 @@
 title: Austin Lawless
 email: austindlawless@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: >
+  This is my personal blog. I mostly write about technology, God, and outdoors activities like camping.
 permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://austindlawless.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://austindlawless.com"
 year: 2018
 
 # Author settings
 author: Austin Lawless
 author-pic: austin-face.jpg
-about-author: My name is Austin Lawless. I have a website.
+about-author: My name is Austin Lawless. I have a website. Tweet at me or comment if you have a question or something to say.
 
 # Contact links
 website: austindlawless.com
@@ -22,11 +20,6 @@ twitter: '@austindlawless'
 
 # Disqus
 discus_identifier: austindlawless-com
-comment_policy: >
-    1. I love comments on this blog
-    2. I delete spam
-    3. Relevant links in comments are actively encouraged
-    4. Irrelevant links are not encouraged
 
 # Tracker
 analytics: UA-40173209-2
