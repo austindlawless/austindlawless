@@ -28,9 +28,10 @@ Big Bend and Guadalupe Mountain are your choices in Texas. But, Arkansas, New Me
 The Western states, like Colorado and Oregon, have lots of it.
 
 
+# What to do at your site
+
 ![camp site](/assets/img/camp-site.jpg)
 
-# What to do at your site
 * Choose a site at least 200 ft from both the trail and water
 * Set up your tent and kitchen
 * Store food securely - watch out for raccoons and bears  and remember trash is food to animals
@@ -53,9 +54,10 @@ Get even more info on setting up a tent [here](https://www.rei.com/learn/expert-
 # How to use a camp stove
 It just like a gas stove in a house except you light it with a match. Let's practice!
 
+# How to build a campfire
+
 ![camp fire](/assets/img/camp-fire.jpg)
 
-# How to build a campfire
 ### Be safe.
 Have water or dirt on hand to put out the fire if needed. Use a safe fire ring. Never leave the fire unattended.
 ### Gather firewood.
@@ -86,9 +88,10 @@ A clove hitch is good for hitching when the knot must be tied under load - such 
 ### [Figure 8 Bend](http://www.animatedknots.com/fig8join/){:target="_blank"}
 This is a secure knot for connecting to cords that is easy ot untie. But, it is a bulky knot.
 
+# How to purify water
+
 ![filtering water](/assets/img/filtering-water.jpg)
 
-# How to purify water 
 ### Micro filter
 Come in a wide variety of sizes and forms including: straws, pumps, bottles, and bags. Do some reasearch and find the filter for you. Filters result in great tasting water that can be purified quickly with work or slowly allowing gravity to do the work. But, filter cartridges require replacing or cleaning on a regular basis.
 ### Chemical tablets
